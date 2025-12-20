@@ -213,7 +213,7 @@ document.addEventListener('click', function(e){
 document.addEventListener('DOMContentLoaded', function() {
     const bg = document.getElementById('parallax-bg');
     
-    if (bg) {
+    if (bg && window.innerWidth > 900) {
         // Fungsi tunggal agar sinkron antara scroll dan mouse
         function applyTransform(x = 0, y = 0) {
             const scrolled = window.pageYOffset;
@@ -222,18 +222,17 @@ document.addEventListener('DOMContentLoaded', function() {
             // scale(1.3) harus lebih besar dari top/left minus di CSS tadi
             bg.style.transform = `translateY(${scrollMove}px) scale(1.3) translate(${x}px, ${y}px)`;
         }
-
         // Jalankan saat scroll
         window.addEventListener('scroll', () => applyTransform());
 
         // Jalankan saat mouse gerak (hanya desktop)
-        if (window.innerWidth > 900) {
-            window.addEventListener('mousemove', (e) => {
-                const xMove = (e.clientX / window.innerWidth - 0.5) * 30;
-                const yMove = (e.clientY / window.innerHeight - 0.5) * 30;
-                applyTransform(xMove, yMove);
-            });
-        }
+        window.addEventListener('mousemove', (e) => {
+              const xMove = (e.clientX / window.innerWidth - 0.5) * 20;
+              const yMove = (e.clientY / window.innerHeight - 0.5) * 20;
+              applyTransform(xMove, yMove);
+        });
+    } else if(bg) {
+        bg.style.transform = 'none';
     }
 });
 

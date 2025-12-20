@@ -626,6 +626,9 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 1.5rem;
     color: #fff;
 }
 .menu .row .menu-back button {
@@ -973,10 +976,18 @@ footer:hover{
         margin: auto;
    }
    .parallax-bg{
-        height: 110%;
-        top: -5%;
-        background-attachment: scroll;
+        height: 100% !important; /* Kembalikan ke 100% agar tidak meluber */
+        width: 100% !important;
+        top: 0 !important;
+        left: 0 !important;
+        transform: none !important; /* PAKSA DIAM: Mematikan efek transform dari JS */
+        background-attachment: scroll !important; /* Mobile lebih stabil dengan scroll */
+        position: absolute;
    }
+   .hero {
+        overflow: hidden;
+        background-image: none !important;
+    }
    /* Fix hero background on mobile */
    .hero .content {
         padding: 0 5%;
