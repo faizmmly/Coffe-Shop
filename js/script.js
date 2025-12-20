@@ -130,6 +130,116 @@ document.addEventListener('click', function(e){
     update();
   });
 
+    // WhatsApp Chat Bubble Animation - show on icon click
+    document.addEventListener('DOMContentLoaded', function() {
+      const bubble = document.getElementById('wa-bubble');
+      const waFloat = document.getElementById('wa-chat-float');
+      const waLink = waFloat.querySelector('a');
+      let bubbleTimeout;
+
+      // Show bubble on icon click
+      waLink.addEventListener('click', function(e) {
+        // Show bubble and prevent link for a moment
+        bubble.classList.add('show');
+        clearTimeout(bubbleTimeout);
+        bubbleTimeout = setTimeout(() => {
+          bubble.classList.remove('show');
+        }, 2500);
+        // Allow link to open WhatsApp after short delay
+        setTimeout(() => {
+          window.open(waLink.href, '_blank');
+        }, 300);
+        e.preventDefault();
+      });
+
+      // Hide bubble if click outside
+      document.addEventListener('click', function(e) {
+        if (!waFloat.contains(e.target)) {
+          bubble.classList.remove('show');
+        }
+      });
+    });
+
+    // Toast Notification
+    function showToast(msg) {
+    const toast = document.getElementById('toast');
+    const toastMsg = document.getElementById('toast-msg');
+    if (toast) {
+        toastMsg.textContent = msg;
+        toast.style.display = 'flex';
+        setTimeout(() => toast.style.display = 'none', 2500);
+    }
+}
+
+// Ripple effect for all .ripple-btn
+    document.addEventListener('DOMContentLoaded', function() {
+      document.querySelectorAll('.ripple-btn').forEach(btn => {
+        btn.addEventListener('click', function(e) {
+          const circle = document.createElement('span');
+          circle.className = 'ripple';
+          const rect = btn.getBoundingClientRect();
+          const size = Math.max(rect.width, rect.height);
+          circle.style.width = circle.style.height = size + 'px';
+          circle.style.left = (e.clientX - rect.left - size/2) + 'px';
+          circle.style.top = (e.clientY - rect.top - size/2) + 'px';
+          btn.appendChild(circle);
+          setTimeout(() => circle.remove(), 600);
+        });
+      });
+    });
 
 
+//Weather Widget (real-time with OpenWeatherMap API)
+    
+      // Menu search filter
+      document.addEventListener('DOMContentLoaded', function() {
+        const searchInput = document.getElementById('menu-search');
+        if (searchInput) {
+          searchInput.addEventListener('input', function() {
+            const keyword = this.value.toLowerCase();
+            document.querySelectorAll('.menu-card').forEach(card => {
+              const title = card.querySelector('.menu-card-title').textContent.toLowerCase();
+              if (title.includes(keyword)) {
+                card.style.display = '';
+              } else {
+                card.style.display = 'none';
+              }
+            });
+          });
+        }
+      });
+
+  //Parallax effect
+const bg = document.getElementById('parallax-bg');
+    if (bg) {
+        const updateParallax = (e) => {
+            const scrolled = window.pageYOffset;
+            let x = 0;
+            let y = 0;
+
+            if (e && window.innerWidth > 900) {
+                x = (e.clientX / window.innerWidth - 0.5) * 15;
+                y = (e.clientY / window.innerHeight - 0.5) * 15;
+            }
+            
+            // Gabungkan scale, scroll, dan mouse move dalam SATU baris
+            bg.style.transform = `translateY(${scrolled * 0.3}px) scale(1.1) translate(${x}px, ${y}px)`;
+        };
+
+        window.addEventListener('scroll', () => updateParallax());
+        if (window.innerWidth > 900) {
+            window.addEventListener('mousemove', (e) => updateParallax(e));
+        }
+    }
+
+// Mouse move effect (desktop)
+bg.addEventListener('mousemove', function(e) {
+  // Kurangi angkanya (misal dari 12 jadi 5) agar gesernya halus dan tidak keluar frame
+  const x = (e.clientX / window.innerWidth - 0.5) * 5; 
+  const y = (e.clientY / window.innerHeight - 0.5) * 5;
+  bg.style.transform = `translateY(${window.scrollY * 0.28}px) scale(1.1) translate(${x}px,${y}px)`;
+});
+
+// Contoh di script.js yang benar agar tidak bocor
+bg.style.transform = `translateY(${scrolled * 0.2}px) scale(1.1) translate(${x}px, ${y}px)`;
 

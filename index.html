@@ -11,12 +11,12 @@
     <link
       href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,300;0,400;0,700&display=swap"
       rel="stylesheet" />
+
     <!-- Playfair Display for Elegant Headings -->
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
 
     <!-- AOS Library -->
     <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
-
 
     <!--Feather icon-->
     <script src="https://unpkg.com/feather-icons"></script>
@@ -38,37 +38,7 @@
         </svg>
       </a>
     </div>
-    <script>
-    // WhatsApp Chat Bubble Animation - show on icon click
-    document.addEventListener('DOMContentLoaded', function() {
-      const bubble = document.getElementById('wa-bubble');
-      const waFloat = document.getElementById('wa-chat-float');
-      const waLink = waFloat.querySelector('a');
-      let bubbleTimeout;
-
-      // Show bubble on icon click
-      waLink.addEventListener('click', function(e) {
-        // Show bubble and prevent link for a moment
-        bubble.classList.add('show');
-        clearTimeout(bubbleTimeout);
-        bubbleTimeout = setTimeout(() => {
-          bubble.classList.remove('show');
-        }, 2500);
-        // Allow link to open WhatsApp after short delay
-        setTimeout(() => {
-          window.open(waLink.href, '_blank');
-        }, 300);
-        e.preventDefault();
-      });
-
-      // Hide bubble if click outside
-      document.addEventListener('click', function(e) {
-        if (!waFloat.contains(e.target)) {
-          bubble.classList.remove('show');
-        }
-      });
-    });
-    </script>
+  
     <!--Navbar start-->
     <nav class="navbar">
       <a href="#" class="navbar-logo">Kopi<span>Kenangan</span>.</a>
@@ -90,13 +60,10 @@
     <!--Hero Section Start-->
     <section class="hero" id="Home">
       <div class="parallax-bg" id="parallax-bg"></div>
-    <main class="content" style="position:relative;z-index:2;">
-    </main>
-      <main class="content">
+      <div class="content" style="position:relative;z-index:2;">
         <h1>Mari nikmati secangkir <span>Kopi</span></h1>
-        
         <a href="#contact" class="cta"> Beli Sekarang </a>
-      </main>
+      </div>
     </section>
     <!--Hero Section End-->
 
@@ -307,88 +274,25 @@
     <!--Feather icons-->
     <script>
       feather.replace();
+      AOS.init({
+        once: true,
+        duration: 800
+      });
     </script>
     <!-- Toast Notification -->
     <div id="toast" style="position:fixed;bottom:2.5rem;right:2.5rem;z-index:99999;min-width:220px;max-width:90vw;padding:1.1rem 1.7rem;background:#c09468;color:#fff;border-radius:1.2rem;box-shadow:0 2px 12px rgba(0,0,0,0.13);font-size:1.1rem;display:none;align-items:center;gap:1rem;">
       <span id="toast-msg"></span>
     </div>
-    <!--My JavaScript-->
-    <script src="js/script.js"></script>
-    <script>
-    // Toast Notification
-    function showToast(msg) {
-      const toast = document.getElementById('toast');
-      const toastMsg = document.getElementById('toast-msg');
-      toastMsg.textContent = msg;
-      toast.style.display = 'flex';
-      toast.style.opacity = '1';
-      setTimeout(() => {
-        toast.style.opacity = '0';
-        setTimeout(() => { toast.style.display = 'none'; }, 400);
-      }, 2200);
-    }
-    // Ripple effect for all .ripple-btn
-    document.addEventListener('DOMContentLoaded', function() {
-      document.querySelectorAll('.ripple-btn').forEach(btn => {
-        btn.addEventListener('click', function(e) {
-          const circle = document.createElement('span');
-          circle.className = 'ripple';
-          const rect = btn.getBoundingClientRect();
-          const size = Math.max(rect.width, rect.height);
-          circle.style.width = circle.style.height = size + 'px';
-          circle.style.left = (e.clientX - rect.left - size/2) + 'px';
-          circle.style.top = (e.clientY - rect.top - size/2) + 'px';
-          btn.appendChild(circle);
-          setTimeout(() => circle.remove(), 600);
-        });
-      });
-    });
-    </script>
-    <!-- Weather Widget (real-time with OpenWeatherMap API) -->
-    <script>
-      // Menu search filter
-      document.addEventListener('DOMContentLoaded', function() {
-        const searchInput = document.getElementById('menu-search');
-        if (searchInput) {
-          searchInput.addEventListener('input', function() {
-            const keyword = this.value.toLowerCase();
-            document.querySelectorAll('.menu-card').forEach(card => {
-              const title = card.querySelector('.menu-card-title').textContent.toLowerCase();
-              if (title.includes(keyword)) {
-                card.style.display = '';
-              } else {
-                card.style.display = 'none';
-              }
-            });
-          });
-        }
-      });
-    </script>
-
-    <!--Parallax style-->
-    <script>
-document.addEventListener('DOMContentLoaded', function() {
-  const bg = document.getElementById('parallax-bg');
-  function parallaxScroll() {
-    const scrolled = window.scrollY;
-    bg.style.transform = `translateY(${scrolled * 0.28}px) scale(1.04)`;
-  }
-  window.addEventListener('scroll', parallaxScroll);
-  // Mouse move effect (desktop)
-  bg.addEventListener('mousemove', function(e) {
-    const x = (e.clientX / window.innerWidth - 0.5) * 12;
-    const y = (e.clientY / window.innerHeight - 0.5) * 8;
-    bg.style.transform += ` translate(${x}px,${y}px)`;
-  });
-});
-</script>
-
+  
 
   <!--AOS Section-->
     <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
 <script>
   AOS.init();
 </script>
+
+  <!-- JS Section -->
+   <script src="js/script.js"></script>
 
   </body>
 </html>

@@ -40,3 +40,5 @@ window.addEventListener('DOMContentLoaded', function() {
     observer.observe(counter);
   });
 });
+
+
