@@ -210,27 +210,32 @@ document.addEventListener('click', function(e){
       });
 
   //Parallax effect
-const bg = document.getElementById('parallax-bg');
+document.addEventListener('DOMContentLoaded', function() {
+    const bg = document.getElementById('parallax-bg');
+    
     if (bg) {
-        const updateParallax = (e) => {
+        // Fungsi tunggal agar sinkron antara scroll dan mouse
+        function applyTransform(x = 0, y = 0) {
             const scrolled = window.pageYOffset;
-            let x = 0;
-            let y = 0;
-
-            if (e && window.innerWidth > 900) {
-                x = (e.clientX / window.innerWidth - 0.5) * 15;
-                y = (e.clientY / window.innerHeight - 0.5) * 15;
-            }
+            const scrollMove = scrolled * 0.3; // Kecepatan scroll
             
-            // Gabungkan scale, scroll, dan mouse move dalam SATU baris
-            bg.style.transform = `translateY(${scrolled * 0.3}px) scale(1.1) translate(${x}px, ${y}px)`;
-        };
+            // scale(1.3) harus lebih besar dari top/left minus di CSS tadi
+            bg.style.transform = `translateY(${scrollMove}px) scale(1.3) translate(${x}px, ${y}px)`;
+        }
 
-        window.addEventListener('scroll', () => updateParallax());
+        // Jalankan saat scroll
+        window.addEventListener('scroll', () => applyTransform());
+
+        // Jalankan saat mouse gerak (hanya desktop)
         if (window.innerWidth > 900) {
-            window.addEventListener('mousemove', (e) => updateParallax(e));
+            window.addEventListener('mousemove', (e) => {
+                const xMove = (e.clientX / window.innerWidth - 0.5) * 30;
+                const yMove = (e.clientY / window.innerHeight - 0.5) * 30;
+                applyTransform(xMove, yMove);
+            });
         }
     }
+});
 
 // Mouse move effect (desktop)
 bg.addEventListener('mousemove', function(e) {
@@ -240,6 +245,4 @@ bg.addEventListener('mousemove', function(e) {
   bg.style.transform = `translateY(${window.scrollY * 0.28}px) scale(1.1) translate(${x}px,${y}px)`;
 });
 
-// Contoh di script.js yang benar agar tidak bocor
-bg.style.transform = `translateY(${scrolled * 0.2}px) scale(1.1) translate(${x}px, ${y}px)`;
 

@@ -382,7 +382,8 @@ body {
     align-items: center;
     position: relative;
     justify-content: flex-start;
-    overflow: hidden;
+    overflow: hidden !important;
+    background-image: none !important;
     background-color: #010101;
 }
 .hero::before {
@@ -404,13 +405,14 @@ body {
 /* parallax effect */
 .parallax-bg {
     position: absolute;
-    top: -10%; left: -10%; width: 120%; height: 120%;
+    top: -15% !important; left: -15% !important; width: 130% !important; height: 130% !important;
     z-index: 1;
-    background: url('/img/header-bg.jpg') center/cover no-repeat;
-    filter: brightness(0.9) saturate(1.1);
+    background: url('/img/header-bg.jpg') center/cover no-repeat !important;
+    filter: brightness(0.9);
     background-size: cover;
-    transform: scale(1.1);
+    transform: scale(1.2) !important;
     will-change: transform;
+    background-attachment: scroll;
 }
 .hero::after{
     content: '';
