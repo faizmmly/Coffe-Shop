@@ -245,28 +245,39 @@ bg.addEventListener('mousemove', function(e) {
 });
 
 // newsletter form responsive
-
 document.getElementById('newsletter-form').addEventListener('submit', function(e) {
     e.preventDefault();
-    const email = document.getElementById('news-email').value;
-    
-    // Simulasi pengiriman
+    const inputUser = document.getElementById('news-kode').value.toUpperCase(); // Paksa huruf besar
     const btn = this.querySelector('.btn-subscribe');
-    btn.innerHTML = 'Mengirim...';
+    
+    // Kode promo yang valid
+    const kodeValid = "PROMO2025"; 
+
+    btn.innerHTML = 'Mengecek...';
     btn.disabled = true;
 
     setTimeout(() => {
-        // Tampilkan pesan sukses yang interaktif
         const content = document.querySelector('.newsletter-content');
-        content.innerHTML = `
-            <div style="animation: fadeZoomIn 0.5s both">
-                <i data-feather="gift" style="width: 50px; height: 50px; color: #c09468; margin-bottom: 1rem;"></i>
-                <h3 style="color: #fff">Selamat! Kupon Kamu Aktif</h3>
-                <p>Gunakan kode: <strong style="color: #c09468; font-size: 1.5rem; border: 2px dashed #c09468; padding: 5px 15px; border-radius: 10px; margin: 10px 0; display: inline-block;">KOPIKENANGAN20</strong></p>
-                <p>Kode telah dikirim ke ${email}. Silahkan tunjukan saat pembayaran!</p>
-            </div>
-        `;
-        feather.replace(); // Refresh icons
-    }, 1500);
+        
+        if (inputUser === kodeValid) {
+            // JIKA KODE BENAR
+            content.innerHTML = `
+                <div style="animation: fadeZoomIn 0.5s both; text-align: center;">
+                    <i data-feather="check-circle" style="width: 50px; height: 50px; color: #25d366; margin-bottom: 1rem;"></i>
+                    <h3 style="color: #fff">Kode Berhasil Diaktifkan!</h3>
+                    <p>Voucher Diskon 20% milikmu:</p>
+                    <strong style="color: #c09468; font-size: 2rem; border: 3px dashed #c09468; padding: 10px 20px; border-radius: 15px; margin: 15px 0; display: inline-block; background: rgba(192, 148, 104, 0.1);">KENANGAN-PRO</strong>
+                    <p>Screenshot layar ini dan tunjukkan ke kasir atau via WA!</p>
+                    <button onclick="location.reload()" style="background: none; border: none; color: #888; cursor: pointer; text-decoration: underline; margin-top: 1rem;">Coba kode lain</button>
+                </div>
+            `;
+        } else {
+            // JIKA KODE SALAH
+            alert('Waduh! Kode "' + inputUser + '" tidak ditemukan. Coba cek lagi ya!');
+            btn.innerHTML = 'Aktifkan';
+            btn.disabled = false;
+        }
+        feather.replace(); 
+    }, 1200);
 });
 
