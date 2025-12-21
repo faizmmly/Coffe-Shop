@@ -244,4 +244,28 @@ bg.addEventListener('mousemove', function(e) {
   bg.style.transform = `translateY(${window.scrollY * 0.28}px) scale(1.1) translate(${x}px,${y}px)`;
 });
 
+// newsletter form responsive
 
+document.getElementById('newsletter-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const email = document.getElementById('news-email').value;
+    
+    // Simulasi pengiriman
+    const btn = this.querySelector('.btn-subscribe');
+    btn.innerHTML = 'Mengirim...';
+    btn.disabled = true;
+
+    setTimeout(() => {
+        // Tampilkan pesan sukses yang interaktif
+        const content = document.querySelector('.newsletter-content');
+        content.innerHTML = `
+            <div style="animation: fadeZoomIn 0.5s both">
+                <i data-feather="gift" style="width: 50px; height: 50px; color: #c09468; margin-bottom: 1rem;"></i>
+                <h3 style="color: #fff">Selamat! Kupon Kamu Aktif</h3>
+                <p>Gunakan kode: <strong style="color: #c09468; font-size: 1.5rem; border: 2px dashed #c09468; padding: 5px 15px; border-radius: 10px; margin: 10px 0; display: inline-block;">KOPIKENANGAN20</strong></p>
+                <p>Kode telah dikirim ke ${email}. Silahkan tunjukan saat pembayaran!</p>
+            </div>
+        `;
+        feather.replace(); // Refresh icons
+    }, 1500);
+});
