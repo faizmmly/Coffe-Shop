@@ -1067,22 +1067,32 @@ footer:hover{
         margin: auto;
    }
    .parallax-bg{
-        height: 100% !important; /* Kembalikan ke 100% agar tidak meluber */
-        width: 100% !important;
-        top: 0 !important;
-        left: 0 !important;
+        display: block !important; /* Sembunyikan background parallax di mobile */
+        opacity: 1 !important;
+        height: 100%; /* Kembalikan ke 100% agar tidak meluber */
+        width: 100%;
+        top: 0;
+        left: 0;
         transform: none !important; /* PAKSA DIAM: Mematikan efek transform dari JS */
-        background-attachment: scroll !important; /* Mobile lebih stabil dengan scroll */
+        background-attachment: scroll; /* Mobile lebih stabil dengan scroll */
+        background-image: url(/img/header-bg.jpg);
         position: absolute;
    }
    .hero {
         overflow: hidden;
         background-image: none !important;
+        background-color: #010101 !important;
     }
    /* Fix hero background on mobile */
    .hero .content {
         padding: 0 5%;
    }
+   .hero::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        z-index: 1;
+    }
     .contact .row{
         flex-direction: column;
         gap: 1rem;
@@ -1188,3 +1198,5 @@ footer:hover{
        font-size: 1rem;
    }
 }
+
+

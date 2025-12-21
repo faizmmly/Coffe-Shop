@@ -269,3 +269,4 @@ document.getElementById('newsletter-form').addEventListener('submit', function(e
         feather.replace(); // Refresh icons
     }, 1500);
 });
+
