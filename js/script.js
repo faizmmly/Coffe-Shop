@@ -306,3 +306,15 @@ document.getElementById('checkout-wa').addEventListener('click', function() {
     // Panggil notifikasi
     showSuccessToast();
 });
+
+// Typing effect di hero section
+var typed = new Typed(".typing", {
+    strings: ["Kopi.", "Kenangan.", "Inspirasi."],
+    typeSpeed: 80,      // Kecepatan mengetik
+    backSpeed: 40,       // Kecepatan menghapus
+    loop: true,          // Mengulang terus menerus
+    startDelay: 0,     // Waktu tunggu sebelum mulai
+    backDelay: 1200,     // Waktu tunggu sebelum menghapus
+    showCursor: true,   // Tampilkan kursor
+    cursorChar: '|'    // Karakter kursor
+});
