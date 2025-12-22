@@ -281,3 +281,28 @@ document.getElementById('newsletter-form').addEventListener('submit', function(e
     }, 1200);
 });
 
+// Toast Notification
+const toast = document.getElementById("toast-notification");
+const closeIcon = document.querySelector(".close-toast");
+const progress = document.querySelector(".progress");
+
+function showSuccessToast() {
+    toast.classList.add("active");
+    
+    // Hilang otomatis setelah 5 detik
+    setTimeout(() => {
+        toast.classList.remove("active");
+    }, 5000);
+}
+
+closeIcon.addEventListener("click", () => {
+    toast.classList.remove("active");
+});
+
+// INTEGRASI DENGAN TOMBOL KIRIM
+document.getElementById('checkout-wa').addEventListener('click', function() {
+    // ... kode kirim WA kamu yang sudah ada ...
+    
+    // Panggil notifikasi
+    showSuccessToast();
+});
