@@ -1031,10 +1031,11 @@ footer:hover{
 
 /* Toast Noitification */
 .toast {
-    position: fixed;
-    top: -100px;
-    left: 50%;
-    transform: translateX(-50%);
+    position: fixed !important;
+    top: -150px !important;
+    bottom: auto !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
     border-radius: 12px;
     border-top: 6px solid #25d366;
     border-left: none;
@@ -1050,8 +1051,8 @@ footer:hover{
 }
 
 .toast.active {
-    top: 30px;
-    transform: translateX(-50%);
+    top: 40px !important;
+    transform: translateX(-50%) !important;
 }
 
 .toast-content {
@@ -1181,15 +1182,92 @@ footer:hover{
     .menu p{
         font-size: 1.2rem;
     }
+    .menu-card {
+        display: flex;
+        flex-direction: column; /* Menyusun isi kartu dari atas ke bawah */
+        justify-content: space-between; /* Judul di atas, Harga/Tombol tetap di bawah */
+        background: rgba(255, 255, 255, 0.05);
+        padding: 2rem;
+        border-radius: 1.5rem;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        text-align: center;
+        transition: 0.3s;
+        width: 100%; /* Mengikuti lebar kolom grid */
+        max-width: 340px; /* Batas maksimal agar tidak terlalu lebar di laptop */
+    }
+    .menu-card img {
+        width: 100%;
+        height: 200px;
+        object-fit: contain; /* Agar gambar tidak gepeng */
+        margin-bottom: 1.5rem;
+    }
+    .menu-card-price {
+        font-weight: bold;
+        color: var(--primary);
+        margin-top: auto; /* Mendorong harga ke bagian paling bawah kartu */
+        padding-top: 1rem;
+    }
+    .menu-card-title {
+        font-size: 1.8rem;
+        margin-bottom: 0.5rem;
+        min-height: 3rem; /* Memberi ruang minimal agar judul 1 baris & 2 baris tetap sejajar */
+    }
+    .menu, .contact {
+        padding: 8rem 7%;
+        max-width: 1280px;
+        margin: 0 auto;
+    }
+    .menu .row{
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        gap: 2.5rem;
+        justify-items: center;
+        align-items: stretch;
+        padding: 2rem 7%;
+    }
+    /* Sisi belakang kartu menu */
+    .menu-card .menu-card-back {
+        padding: 2rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+    }
+    /* Perkecil ukuran judul di bagian belakang */
+    .menu-card .menu-card-back h3 {
+        font-size: 1.6rem; /* Lebih kecil dari judul depan */
+        margin-bottom: 1rem;
+        color: var(--primary);
+    }
+    /* Perkecil ukuran deskripsi */
+    .menu-card .menu-card-back p {
+        font-size: 1rem; /* Ukuran standar yang nyaman dibaca di laptop */
+        line-height: 1.5;
+        color: #ddd;
+        margin-bottom: 1.5rem;
+    }
+    /* Sesuaikan tombol di bagian belakang */
+    .menu-card .menu-card-back .btn {
+        padding: 0.6rem 1.5rem;
+        font-size: 1.1rem;
+    }
     .contact .row{
-        flex-wrap: wrap;
+        display: flex;
+        align-items: stretch;
+        gap: 2rem;
+        background-color: #222;
+        border-radius: 1rem;
+        overflow: hidden;
     }
     .contact .row .maps{
-        height: 30rem;
+        flex: 1;
+        height: auto;
+        min-height: 450px;
     }
     .contact .row form{
-        max-width: 600px;
-        margin: auto;
+        flex: 1;
+        padding: 2rem;
     }
     .contact .row form .input-group .product-selection input[type="number"] {
         width: 100%;
@@ -1199,12 +1277,18 @@ footer:hover{
         flex-direction: column;
     }
     .contact .row form .button-group {
+        display: flex;
         justify-content: center;
         padding: 1rem;
+        width: 100%;
+        margin-top: 2rem;
     }
     .contact .row form .button-group .btn {
-        width: 100%;
-        max-width: 300px;
+        padding: 1rem 3rem;
+        width: auto;
+        max-width: 200px;
+        cursor: pointer;
+        border-radius: 0.5rem;
     }
 }
 
