@@ -86,7 +86,6 @@ document.addEventListener('click', function(e){
 // Pilih pesanan
   const checkboxes = document.querySelectorAll('.product-selection input[type="checkbox"]');
 
-
   // Kalkulator harga otomatis
   function updateTotalHarga() {
     let total = 0;
@@ -318,3 +317,4 @@ var typed = new Typed(".typing", {
     showCursor: true,   // Tampilkan kursor
     cursorChar: '|'    // Karakter kursor
 });
+

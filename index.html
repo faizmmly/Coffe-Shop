@@ -67,11 +67,10 @@
     </section>
     <!--Hero Section End-->
 
-  <!-- Wave Separator Hero-About -->
-  <svg class="wave-separator" viewBox="0 0 1440 60" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0,30 C360,60 1080,0 1440,30 L1440,60 L0,60 Z" fill="#fff7ed"/></svg>
-
     <!--About Section start-->
       <section id="about" class="about">
+        <svg class="wave-separator" viewBox="0 0 1440 60" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0,30 C360,60 1080,0 1440,30 L1440,60 L0,60 Z" fill="#fff7ed"/></svg>
+
         <h2 data-aos="fade-down"><span>Tentang</span> Kami</h2>
 
         <div class="row">
@@ -166,7 +165,6 @@
               <a href="#contact"><button class="ripple-btn">Pesan Sekarang</button></a>
             </div>
           </div>
-          
         </div>
     </section>
     <!--Menu Section End-->
@@ -194,35 +192,35 @@
             </div>
             
             <!--Produk Selection-->
-
-            <div class="input-group">
               <div class="product-selection">
+                <h3>Pilih Menu</h3>
                 <label>
-                  <input type="checkbox" name="produk[]" value="Americano" data-harga="25000">
+                  <input type="checkbox" class="menu-checkbox" name="produk[]" value="Americano" data-harga="25000">
                   Americano
-                  <input type="number" name="qty[Americano]" min="1" max="10" placeholder="0" disabled>
+                  <input type="number" class="menu-qty" name="qty[Americano]" min="1" max="10" placeholder="0" disabled>
                   <span class="harga-menu" style="font-size:0.95rem;color:#c09468;margin-left:0.7em;">Rp25.000</span>
                 </label>
                 <label>
-                  <input type="checkbox" name="produk[]" value="Matcha" data-harga="20000">
+                  <input type="checkbox" class="menu-checkbox" name="produk[]" value="Matcha" data-harga="20000">
                   Matcha
-                  <input type="number" name="qty[Matcha]" min="1" max="10" placeholder="0" disabled>
+                  <input type="number" class="menu-qty" name="qty[Matcha]" min="1" max="10" placeholder="0" disabled>
                   <span class="harga-menu" style="font-size:0.95rem;color:#c09468;margin-left:0.7em;">Rp20.000</span>
                 </label>
                 <label>
-                  <input type="checkbox" name="produk[]" value="Espresso" data-harga="25000">
+                  <input type="checkbox" class="menu-checkbox" name="produk[]" value="Espresso" data-harga="25000">
                   Espresso
-                  <input type="number" name="qty[Espresso]" min="1" max="10" placeholder="0" disabled>
+                  <input type="number" class="menu-qty" name="qty[Espresso]" min="1" max="10" placeholder="0" disabled>
                   <span class="harga-menu" style="font-size:0.95rem;color:#c09468;margin-left:0.7em;">Rp25.000</span>
                 </label>
                 <label>
-                  <input type="checkbox" name="produk[]" value="Cappuccino" data-harga="25000">
+                  <input type="checkbox" class="menu-checkbox" name="produk[]" value="Cappuccino" data-harga="25000">
                   Cappuccino
-                  <input type="number" name="qty[Cappuccino]" min="1" max="10" placeholder="0" disabled>
+                  <input type="number" class="menu-qty" name="qty[Cappuccino]" min="1" max="10" placeholder="0" disabled>
                   <span class="harga-menu" style="font-size:0.95rem;color:#c09468;margin-left:0.7em;">Rp25.000</span>
                 </label>
               </div>
-              <div style="margin-top:1.2em;text-align:right;font-size:1.1rem;">
+              
+              <div class="total-harga-container">
                 <strong>Total: <span id="total-harga">Rp0</span></strong>
               </div>
 
