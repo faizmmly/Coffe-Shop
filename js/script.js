@@ -1,3 +1,66 @@
+// 1. Deklarasi Elemen Utama (Hanya sekali!)
+const navbarNav = document.querySelector('.navbar-nav');
+const searchForm = document.querySelector('.search-form');
+const searchButton = document.querySelector('#search-button');
+const hamburger = document.querySelector('#hamburger-menu');
+const parallaxBg = document.getElementById('parallax-bg');
+
+// 2. Fungsi Hamburger & Search Toggle
+document.addEventListener('click', function(e) {
+    // Toggle Hamburger
+    if (hamburger && hamburger.contains(e.target)) {
+        navbarNav.classList.toggle('active');
+        e.preventDefault();
+    }
+    // Toggle Search Form
+    else if (searchButton && searchButton.contains(e.target)) {
+        searchForm.classList.toggle('active');
+        e.preventDefault();
+    }
+    // Klik di luar untuk menutup
+    else if (!navbarNav.contains(e.target) && !hamburger.contains(e.target) && 
+             !searchForm.contains(e.target) && !searchButton.contains(e.target)) {
+        navbarNav.classList.remove('active');
+        searchForm.classList.remove('active');
+    }
+});
+
+if (searchInput) {
+    searchInput.addEventListener('input', function() {
+        const filter = this.value.toLowerCase().replace(/-/g, '').trim();
+        const cards = document.querySelectorAll('.menu-card');
+
+        cards.forEach(card => {
+            const titleElement = card.querySelector('.menu-card-title');
+            if (titleElement) {
+                const title = titleElement.textContent.toLowerCase().replace(/-/g, '').trim();
+                card.style.display = title.includes(filter) ? '' : 'none';
+            }
+        });
+    });
+}
+
+if (parallaxBg && window.innerWidth > 900) {
+    window.addEventListener('scroll', () => {
+        const scrolled = window.pageYOffset;
+        parallaxBg.style.transform = `translateY(${scrolled * 0.3}px) scale(1.3)`;
+    });
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    if (typeof feather !== 'undefined') feather.replace();
+    
+    if (document.querySelector(".typing")) {
+        new Typed(".typing", {
+            strings: ["Kopi.", "Kenangan.", "Inspirasi."],
+            typeSpeed: 80,
+            backSpeed: 40,
+            loop: true,
+            backDelay: 1200
+        });
+    }
+});
+
 // === Weather Widget Real-time & Interaktif ===
 // Ganti 'YOUR_API_KEY' dengan API key OpenWeatherMap milik Anda
 const WEATHER_API_KEY = 'YOUR_API_KEY';
@@ -34,23 +97,6 @@ if (weatherWidget && WEATHER_API_KEY !== 'YOUR_API_KEY') {
     weatherWidget.style.transform = 'scale(1)';
   });
 }
-//Toggle class active
-const navbarNav = document.querySelector
-('.navbar-nav');
-// ketika hamburger menu di klik
-document.querySelector('#hamburger-menu').
-onclick = () => {
-    navbarNav.classList.toggle('active');
-};
-
-// Klik di tempat lain
-const hamburger = document.querySelector('#hamburger-menu');
-
-document.addEventListener('click', function(e){
-    if(!hamburger.contains(e.target) && !navbarNav.contains(e.target)){
-        navbarNav.classList.remove('active');
-    }
-});
 
 // Contact Pesanan
     document.getElementById("form-wa").addEventListener("submit", function(e) {
@@ -208,32 +254,6 @@ document.addEventListener('click', function(e){
         }
       });
 
-  //Parallax effect
-document.addEventListener('DOMContentLoaded', function() {
-    const bg = document.getElementById('parallax-bg');
-    
-    if (bg && window.innerWidth > 900) {
-        // Fungsi tunggal agar sinkron antara scroll dan mouse
-        function applyTransform(x = 0, y = 0) {
-            const scrolled = window.pageYOffset;
-            const scrollMove = scrolled * 0.3; // Kecepatan scroll
-            
-            // scale(1.3) harus lebih besar dari top/left minus di CSS tadi
-            bg.style.transform = `translateY(${scrollMove}px) scale(1.3) translate(${x}px, ${y}px)`;
-        }
-        // Jalankan saat scroll
-        window.addEventListener('scroll', () => applyTransform());
-
-        // Jalankan saat mouse gerak (hanya desktop)
-        window.addEventListener('mousemove', (e) => {
-              const xMove = (e.clientX / window.innerWidth - 0.5) * 20;
-              const yMove = (e.clientY / window.innerHeight - 0.5) * 20;
-              applyTransform(xMove, yMove);
-        });
-    } else if(bg) {
-        bg.style.transform = 'none';
-    }
-});
 
 // Mouse move effect (desktop)
 bg.addEventListener('mousemove', function(e) {
